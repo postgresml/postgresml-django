@@ -1,0 +1,28 @@
+[project]
+name = "postgresml-django"
+requires-python = ">=3.8"
+version = "0.1.0"
+description = "PostgresML Django integration that enables automatic embedding of specified fields."
+authors = [
+  {name = "PostgresML",  email = "team@postgresml.org"},
+]
+readme = "README.md"
+keywords = ["django","machine learning","vector databases","embeddings"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  "Django",
+  "pgvector"
+]
+
+[project.urls]
+Homepage = "https://postgresml.org"
+Repository = "https://github.com/postgresml/postgresml-django"
+Documentation = "https://github.com/postgresml/postgresml-django"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
