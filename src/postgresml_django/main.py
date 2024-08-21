@@ -61,7 +61,7 @@ class Embed(models.Model):
         # Generate an embedding for the text
         query_embedding = GenerateEmbedding(
             Value(query_text),
-            "intfloat/e5-small-v2",
+            field_instance.transformer,
             field_instance.transformer_recall_parameters,
         )
 

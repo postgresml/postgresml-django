@@ -44,7 +44,7 @@ results = Document.vector_search("text_embedding", "some query to search against
 
 ### Example 2: Using mixedbread-ai/mxbai-embed-large-v1
 
-This example shows how to use the `mixedbread-ai/mxbai-embed-large-v1` transformer, which has an embedding size of 512 and requires specific parameters for recall.
+This example shows how to use the `mixedbread-ai/mxbai-embed-large-v1` transformer, which has an embedding size of 1024 and requires specific parameters for recall.
 
 ```python
 from django.db import models
@@ -54,19 +54,19 @@ class Article(Embed):
     content = models.TextField()
     content_embedding = VectorField(
         field_to_embed="content",
-        dimensions=512,
+        dimensions=1024,
         transformer="mixedbread-ai/mxbai-embed-large-v1",
         transformer_recall_parameters={
-            "query": "Represent this sentence for searching relevant passages: "
+            "prompt": "Represent this sentence for searching relevant passages: "
         }
     )
 
 # Searching
-results = Article.vector_search("content_embedding", "search query")
+results = Article.vector_search("content_embedding", "some query to search against")
 ```
 
 Note the differences between the two examples:
-1. The `dimensions` parameter is set to 384 for `intfloat/e5-small-v2` and 512 for `mixedbread-ai/mxbai-embed-large-v1`.
+1. The `dimensions` parameter is set to 384 for `intfloat/e5-small-v2` and 1024 for `mixedbread-ai/mxbai-embed-large-v1`.
 2. The `mixedbread-ai/mxbai-embed-large-v1` transformer requires additional parameters for recall, which are specified in the `transformer_recall_parameters` argument.
 
 Both examples will automatically generate embeddings when instances are saved and allow for vector similarity searches using the `vector_search` method.
